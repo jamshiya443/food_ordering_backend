@@ -1,6 +1,7 @@
 
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 // Register User
 const registerUser = async (req, res) => {
@@ -57,4 +58,72 @@ const registerUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser };
+// Login User
+const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        // Check required fields
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "Please provide email and password"
+            });
+        }
+
+        // Find user by email and include password
+        const user = await User.findOne({
+            email: email.toLowerCase().trim()
+        }).select("+password");
+
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid email or password"
+            });
+        }
+
+        // Compare password
+        const isPasswordValid = await bcrypt.compare(
+            password,
+            user.password
+        );
+
+        if (!isPasswordValid) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid email or password"
+            });
+        }
+
+        // Generate JWT token
+        const token = jwt.sign(
+            { id: user._id, role: user.role },
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
+        );
+
+        // Send response
+        res.status(200).json({
+            success: true,
+            message: "Login successful",
+            token,
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
+        });
+
+    } catch (error) {
+        console.error("Login error:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Server error during login"
+        });
+    }
+};
+
+module.exports = { registerUser, loginUser };
