@@ -5,7 +5,10 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const connectDB = require("./config/db");
+
 const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
+
 const { protect, admin } = require("./middleware/authMiddleware");
 
 const app = express();
@@ -17,6 +20,7 @@ app.use(cookieParser());
 
 // API Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
 
 // Home Route
 app.get("/", (req, res) => {
