@@ -3,8 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
+
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
+const { protect, admin } = require("./middleware/authMiddleware");
 
 const app = express();
 
@@ -16,11 +18,28 @@ app.use(cookieParser());
 // API Routes
 app.use("/api/auth", authRoutes);
 
-// Test route
+// Home Route
 app.get("/", (req, res) => {
     res.status(200).json({
         success: true,
         message: "Food Ordering API is running!"
+    });
+});
+
+// Protected Test Route
+app.get("/api/auth/profile", protect, (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "Access granted!",
+        user: req.user
+    });
+});
+
+// Admin Test Route
+app.get("/api/admin/test", protect, admin, (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "Welcome Admin!"
     });
 });
 
