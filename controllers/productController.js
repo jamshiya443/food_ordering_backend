@@ -4,7 +4,37 @@ const Product = require("../models/Product");
 // 1. Create Product
 const createProduct = async (req, res) => {
     try {
-        const product = await Product.create(req.body);
+        const {
+            name,
+            description,
+            price,
+            stock,
+            category,
+            image
+        } = req.body;
+
+        if (
+            !name ||
+            !description ||
+            price === undefined ||
+            stock === undefined ||
+            !category ||
+            !image
+        ) {
+            return res.status(400).json({
+                success: false,
+                message: "Please provide all required product fields"
+            });
+        }
+
+        const product = await Product.create({
+            name,
+            description,
+            price,
+            stock,
+            category,
+            image
+        });
 
         res.status(201).json({
             success: true,
@@ -132,6 +162,7 @@ const deleteProduct = async (req, res) => {
     }
 };
 
+// Export Controllers
 module.exports = {
     createProduct,
     getAllProducts,
