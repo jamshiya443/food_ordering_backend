@@ -1,37 +1,42 @@
-# TastyCart – Backend API
+# 🍔 TastyCart – Backend API
 
-The TastyCart backend is a RESTful API developed using Node.js, Express.js, and MongoDB. It handles user authentication, product management, cart checkout, and order processing for the TastyCart online food ordering application.
+This repository contains the backend of TastyCart, a full-stack online food ordering application built using Node.js, Express.js, and MongoDB.
 
-## Live Backend
+The backend provides REST APIs for user authentication, product management, cart and order operations, and administrator functionalities.
 
-**API URL:** https://food-ordering-backend-773w.onrender.com
+## 🌐 Deployment
 
-## Features
+**Live Backend:** https://food-ordering-backend-773w.onrender.com
+
+**Frontend:** https://tastycart-theta.vercel.app/
+
+**Backend Repository:** https://github.com/jamshiya443/food_ordering_backend
+
+## ✨ Features
 
 - User registration and login
-- Secure password hashing using bcryptjs
+- Password hashing using bcrypt
 - JWT-based authentication
-- Role-based authorization for customers and administrators
-- Product management (Create, Read, Update, Delete)
-- Product category filtering
-- Order creation and management
-- Stock validation and automatic stock updates
+- Role-based authorization
+- Product management
+- Order creation and retrieval
 - Customer order history
 - Admin order management
+- Order status updates
 - MongoDB database integration
 
-## Technology Stack
+## 🛠️ Technologies Used
 
 - Node.js
 - Express.js
-- MongoDB Atlas
+- MongoDB
 - Mongoose
 - JSON Web Token (JWT)
 - bcryptjs
 - dotenv
 - CORS
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 backend/
@@ -47,105 +52,66 @@ backend/
 └── server.js
 ```
 
-## Installation and Setup
+## 🚀 Run Locally
 
-### 1. Clone the Repository
+1. Clone the backend repository:
 
 ```bash
 git clone https://github.com/jamshiya443/food_ordering_backend.git
 ```
 
-### 2. Navigate to the Backend Folder
+2. Navigate to the backend folder:
 
 ```bash
 cd food_ordering_backend
 ```
 
-### 3. Install Dependencies
+3. Install dependencies:
 
 ```bash
 npm install
 ```
 
-### 4. Configure Environment Variables
-
-Create a `.env` file in the backend root directory:
+4. Create a `.env` file in the backend root directory and configure the required environment variables:
 
 ```env
 PORT=5000
-NODE_ENV=development
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-CLIENT_URL=http://localhost:3000
+JWT_SECRET=your_secret_key
 ```
 
-Replace the placeholder values with your own private configuration.
+Use your own MongoDB connection string and a secure JWT secret. Never commit your actual `.env` file.
 
-### 5. Start the Server
-
-For normal startup:
+5. Start the backend:
 
 ```bash
 npm start
 ```
 
-For development:
+The server will run on:
 
-```bash
-npm run dev
+```text
+http://localhost:5000
 ```
 
-The backend runs at:
+## 🔗 API Base URL
 
-http://localhost:5000
+```text
+https://food-ordering-backend-773w.onrender.com/api
+```
 
-## API Overview
+## 🔐 Authentication and Authorization
 
-The API uses the `/api` base path.
+- JWT tokens are used to authenticate users.
+- Passwords are securely hashed.
+- Protected routes require valid authentication.
+- Admin-only routes require administrator authorization.
+- Public registration creates regular user accounts.
 
-| Module | Functionality |
-|---|---|
-| Authentication | Register and login |
-| Products | View and manage products |
-| Orders | Create and manage orders |
-| Customer Orders | View personal order history |
-| Admin | Manage products and order statuses |
+## 🗄️ Database
 
-Protected routes require a valid JWT token. Administrative routes require administrator authorization.
+MongoDB Atlas is used as the cloud database, with Mongoose for schema definition and database operations.
 
-## Database
+## 📌 Project Objective
 
-TastyCart uses MongoDB Atlas for cloud database storage and Mongoose for database operations.
-
-Main collections:
-
-- Users
-- Products
-- Orders
-
-Passwords are stored as secure bcrypt hashes.
-
-## Deployment
-
-The backend is deployed using **Render** and connects to **MongoDB Atlas**.
-
-- **Backend Hosting:** Render
-- **Database Hosting:** MongoDB Atlas
-
-## Security Notes
-
-- Environment variables are stored privately.
-- Passwords are hashed before storage.
-- JWT authentication protects private routes.
-- Role-based middleware restricts administrative operations.
-- Never commit `.env` files or expose private credentials.
-
-## Author
-
-**Fathima Jamshiya**
-
-Full-Stack Development Project
-
----
-
-*TastyCart – Making food ordering simple and convenient.*
+The backend provides the server-side functionality for TastyCart, handling authentication, database operations, product management, and order processing through RESTful APIs.
