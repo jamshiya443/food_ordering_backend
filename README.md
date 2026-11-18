@@ -1,10 +1,10 @@
-# 🍔 TastyCart – Backend API
+# TastyCart – Backend API
 
 This repository contains the backend of TastyCart, a full-stack online food ordering application built using Node.js, Express.js, and MongoDB.
 
 The backend provides REST APIs for user authentication, product management, cart and order operations, and administrator functionalities.
 
-## 🌐 Deployment
+##  Deployment
 
 **Live Backend:** https://food-ordering-backend-773w.onrender.com
 
@@ -12,7 +12,7 @@ The backend provides REST APIs for user authentication, product management, cart
 
 **Backend Repository:** https://github.com/jamshiya443/food_ordering_backend
 
-## ✨ Features
+##  Features
 
 - User registration and login
 - Password hashing using bcrypt
@@ -25,7 +25,7 @@ The backend provides REST APIs for user authentication, product management, cart
 - Order status updates
 - MongoDB database integration
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - Node.js
 - Express.js
@@ -36,7 +36,7 @@ The backend provides REST APIs for user authentication, product management, cart
 - dotenv
 - CORS
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 backend/
@@ -52,7 +52,7 @@ backend/
 └── server.js
 ```
 
-## 🚀 Run Locally
+##  Run Locally
 
 1. Clone the backend repository:
 
@@ -94,13 +94,13 @@ The server will run on:
 http://localhost:5000
 ```
 
-## 🔗 API Base URL
+##  API Base URL
 
 ```text
 https://food-ordering-backend-773w.onrender.com/api
 ```
 
-## 🔐 Authentication and Authorization
+##  Authentication and Authorization
 
 - JWT tokens are used to authenticate users.
 - Passwords are securely hashed.
@@ -108,10 +108,10 @@ https://food-ordering-backend-773w.onrender.com/api
 - Admin-only routes require administrator authorization.
 - Public registration creates regular user accounts.
 
-## 🗄️ Database
+## Database
 
 MongoDB Atlas is used as the cloud database, with Mongoose for schema definition and database operations.
 
-## 📌 Project Objective
+##  Project Objective
 
 The backend provides the server-side functionality for TastyCart, handling authentication, database operations, product management, and order processing through RESTful APIs.
